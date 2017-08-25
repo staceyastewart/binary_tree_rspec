@@ -1,3 +1,5 @@
+require "rspec"
+
 class Node
 
   attr_accessor :value, :left, :right
@@ -79,6 +81,23 @@ class Tree
       else
         findNode(value, currentNode.right)
       end
+    end
+  end
+end
+
+RSpec.describe Node do
+  y = Node.new(10, 5, 15)
+  x = Node.new(5)
+
+  describe "instantiation" do
+    it "should have left and right attributes that are nil" do
+      expect(x.left).to eq(nil)
+      expect(x.right).to eq(nil)
+    end
+    it "can be instantiated with value, left, and right values" do
+      expect(y.left).to_not be_nil
+      expect(y.right).to_not be_nil
+      expect(y.value).to_not be_nil
     end
   end
 end
