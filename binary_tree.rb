@@ -83,6 +83,7 @@ class Tree
       end
     end
   end
+  
 end
 
 RSpec.describe Node do
@@ -105,6 +106,7 @@ end
 RSpec.describe Tree do
   y = Node.new(10)
   x = Node.new(5)
+  z = Node.new(15)
   tree = Tree.new
 
   describe "instantiation" do
@@ -118,9 +120,13 @@ RSpec.describe Tree do
       tree.add(y)
       expect(tree.root).to_not be_nil
     end
-    it "should add a second node to tree" do
+    it "should add a second node to tree that is less than root" do
       tree.add(x)
-      # expect(y.left).to eq(x)
+      expect(y.left).to eq(x)
+    end
+    it "should add a second node to tree that is greater than root" do
+      tree.add(z)
+      expect(y.right).to eq(z)
     end
   end
 end
