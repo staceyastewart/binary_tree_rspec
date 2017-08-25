@@ -31,13 +31,13 @@ class Tree
   def addNode(newNode, currentNode)
     if newNode.value < currentNode.value
       if currentNode.left.nil?
-        currentNode.left = newNode.value
+        currentNode.left = newNode
       else
         addNode(newNode, currentNode.left)
       end
     else
       if currentNode.right.nil?
-        currentNode.right = newNode.value
+        currentNode.right = newNode
       else
         addNode(newNode, currentNode.right)
       end
@@ -98,6 +98,29 @@ RSpec.describe Node do
       expect(y.left).to_not be_nil
       expect(y.right).to_not be_nil
       expect(y.value).to_not be_nil
+    end
+  end
+end
+
+RSpec.describe Tree do
+  y = Node.new(10)
+  x = Node.new(5)
+  tree = Tree.new
+
+  describe "instantiation" do
+    it "should have a root that is nil" do
+      expect(tree.root).to eq(nil)
+    end
+  end
+
+  describe "add node" do
+    it "should add a root node to the tree" do
+      tree.add(y)
+      expect(tree.root).to_not be_nil
+    end
+    it "should add a second node to tree" do
+      tree.add(x)
+      # expect(y.left).to eq(x)
     end
   end
 end
