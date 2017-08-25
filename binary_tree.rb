@@ -42,4 +42,43 @@ class Tree
     end
   end
 
+  def find(value)
+    if value < @root
+      if @root.left.nil?
+        return false
+      elsif currentNode.left == value
+        return currentNode.left
+      else
+        findNode(value, currentNode.left)
+      end
+    else
+      if @root.right.nil?
+        return false
+      elsif currentNode.right == value
+        return currentNode.right
+      else
+        findNode(value, currentNode.right)
+      end
+    end
+  end
+
+  def findNode(value, currentNode)
+    if value < currentNode.value
+      if currentNode.left.nil?
+        return false #this doesn't exist
+      elsif currentNode.left == value
+        return currentNode.left
+      else
+        findNode(value, currentNode.left)
+      end
+    else
+      if currentNode.right.nil?
+        return false #this doesn't exist
+      elsif currentNode.right == value
+        return currentNode.right
+      else
+        findNode(value, currentNode.right)
+      end
+    end
+  end
 end
