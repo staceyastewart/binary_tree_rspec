@@ -45,21 +45,21 @@ class Tree
   end
 
   def find(value)
-    if value < @root
+    if value < @root.value
       if @root.left.nil?
         return false
-      elsif currentNode.left == value
-        return currentNode.left
+      elsif @root.left == value
+        return @root.left
       else
-        findNode(value, currentNode.left)
+        findNode(value, @root.left)
       end
     else
       if @root.right.nil?
         return false
-      elsif currentNode.right == value
-        return currentNode.right
+      elsif @root.right == value
+        return @root.right
       else
-        findNode(value, currentNode.right)
+        findNode(value, @root.right)
       end
     end
   end
@@ -127,6 +127,12 @@ RSpec.describe Tree do
     it "should add a second node to tree that is greater than root" do
       tree.add(z)
       expect(y.right).to eq(z)
+    end
+  end
+
+  describe "find node" do
+    it "should find a node" do
+      expect(tree.find(10)).to_not be_nil
     end
   end
 end
