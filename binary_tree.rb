@@ -70,17 +70,20 @@ class Tree
     if value == currentNode.value
       return currentNode
     elsif value < currentNode.value
+      puts "less than"
       if currentNode.left.nil?
+        "about to be false"
         return false #this doesn't exist
-      elsif currentNode.left == value
+      elsif currentNode.left.value == value
         return currentNode.left
       else
         findNode(value, currentNode.left)
       end
     else
+      puts "greater than"
       if currentNode.right.nil?
         return false #this doesn't exist
-      elsif currentNode.right == value
+      elsif currentNode.right.value == value
         return currentNode.right
       else
         findNode(value, currentNode.right)
@@ -111,6 +114,9 @@ RSpec.describe Tree do
   y = Node.new(10)
   x = Node.new(5)
   z = Node.new(15)
+  a = Node.new(4)
+  b = Node.new(6)
+  c = Node.new(7)
   tree = Tree.new
 
   describe "instantiation" do
@@ -146,6 +152,9 @@ RSpec.describe Tree do
     end
     it "should find a node to the left" do
       expect(tree.find(5)).to eq(x)
+    end
+    it "should find a node to the left twice" do
+      expect(tree.find(4)).to eq(a)
     end
   end
 end
