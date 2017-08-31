@@ -144,5 +144,8 @@ RSpec.describe Tree do
     it "should find a node to the right" do
       expect(tree.find(15)).to eq(z)
     end
+    it "should find a node to the left" do
+      expect(tree.find(5)).to eq(x)
+    end
   end
 end
