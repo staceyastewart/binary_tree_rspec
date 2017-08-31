@@ -45,7 +45,7 @@ class Tree
   end
 
   def find(value)
-    if value = @root.value
+    if value == @root.value
       return @root
     elsif value < @root.value
       if @root.left.nil?
@@ -67,7 +67,9 @@ class Tree
   end
 
   def findNode(value, currentNode)
-    if value < currentNode.value
+    if value == currentNode.value
+      return currentNode
+    elsif value < currentNode.value
       if currentNode.left.nil?
         return false #this doesn't exist
       elsif currentNode.left == value
@@ -138,6 +140,9 @@ RSpec.describe Tree do
     end
     it "should find the root" do
       expect(tree.find(10)).to eq(y)
+    end
+    it "should find a node to the right" do
+      expect(tree.find(15)).to eq(z)
     end
   end
 end
