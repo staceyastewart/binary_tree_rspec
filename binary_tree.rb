@@ -48,6 +48,7 @@ class Tree
     if value == @root.value
       return @root
     elsif value < @root.value
+      # puts "go left"
       if @root.left.nil?
         return false
       elsif @root.left == value
@@ -56,6 +57,7 @@ class Tree
         findNode(value, @root.left)
       end
     else
+      # puts "go right"
       if @root.right.nil?
         return false
       elsif @root.right == value
@@ -70,9 +72,9 @@ class Tree
     if value == currentNode.value
       return currentNode
     elsif value < currentNode.value
-      puts "less than"
+      # puts "less than"
       if currentNode.left.nil?
-        "about to be false"
+        # puts "about to be false"
         return false #this doesn't exist
       elsif currentNode.left.value == value
         return currentNode.left
@@ -80,8 +82,9 @@ class Tree
         findNode(value, currentNode.left)
       end
     else
-      puts "greater than"
+      # puts "greater than"
       if currentNode.right.nil?
+        # puts "false over here"
         return false #this doesn't exist
       elsif currentNode.right.value == value
         return currentNode.right
@@ -154,6 +157,10 @@ RSpec.describe Tree do
       expect(tree.find(5)).to eq(x)
     end
     it "should find a node to the left twice" do
+      puts "starting last test"
+      tree.add(a)
+      tree.add(b)
+      tree.add(c)
       expect(tree.find(4)).to eq(a)
     end
   end
